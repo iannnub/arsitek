@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Menetapkan basis untuk rewrite.
+  # Jika XAMPP Anda melayani dari http://localhost/ dan proyek Anda ada di htdocs/arsitek,
+  # maka basis untuk permintaan ke /arsitek/... adalah /arsitek/
+  RewriteBase /arsitek/
+
+  # Kondisi: Jika permintaan BUKAN untuk sesuatu yang sudah ada di dalam direktori /public/
+  # Ini untuk mencegah loop rewrite jika URL asli sudah benar menunjuk ke /public/.
+  # %{REQUEST_URI} dimulai dengan / dan mencakup path setelah hostname.
+  # Contoh: untuk http://localhost/arsitek/halaman, %{REQUEST_URI} adalah /arsitek/halaman.
+  RewriteCond %{REQUEST_URI} !^/arsitek/public/
+
+  # Aturan Rewrite: Arahkan semua permintaan lain untuk dilayani dari direktori public/.
+  # Contoh:
+  # Permintaan /arsitek/             -> akan dilayani oleh /arsitek/public/ (dan kemudian DirectoryIndex seperti index.php)
+  # Permintaan /arsitek/produk      -> akan dilayani oleh /arsitek/public/produk (atau public/produk.php)
+  # Permintaan /arsitek/css/style.css -> akan dilayani oleh /arsitek/public/css/style.css
+  #
+  # Flag [L] berarti berhenti memproses aturan rewrite lain jika aturan ini cocok.
+  # Flag [QSA] (Query String Append) berarti menambahkan query string yang ada dari permintaan asli.
+  RewriteRule ^(.*)$ public/$1 [L,QSA]
+</IfModule>
