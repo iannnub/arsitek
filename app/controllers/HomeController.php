@@ -22,7 +22,7 @@ class HomeController
                 [
                     'name' => 'Ahmad Farhan',
                     'position' => 'Principal Architect',
-                    'bio' => 'Berpengalaman lebih dari 15 tahun dalam bidang arsitektur.',
+                    'bio' => 'Berpengalaman lebih dari 10 tahun dalam bidang arsitektur.',
                     'image' => 'https://source.unsplash.com/100x100/?portrait,man,architect&sig=1'
                 ],
                 [
