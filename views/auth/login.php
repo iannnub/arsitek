@@ -161,7 +161,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <a href="<?= url('auth/register') ?>" class="text-sm font-medium text-primary-500 hover:text-primary-300 transition-colors">Daftar</a>
     <?php else: ?>
         <span class="text-sm text-gray-300">Halo, <?= htmlspecialchars($_SESSION['user']['name'] ?? '', ENT_QUOTES, 'UTF-8') ?></span>
-        <a href="<?= url('logout') ?>" class="text-sm font-medium text-red-400 hover:text-red-300 transition-colors">Logout</a>
+        <a href="<?= url('../auth/logout') ?>" class="text-sm font-medium text-red-400 hover:text-red-300 transition-colors">Logout</a>
     <?php endif; ?>
 </div>
         </div>
